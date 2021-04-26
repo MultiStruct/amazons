@@ -1,0 +1,124 @@
+<div style="color:#000000;background-color:rgba(255, 255, 255, 0.5);padding:20px;margin-bottom:10px;text-align:left">
+    This is a port of the board game <a href="https://en.wikipedia.org/wiki/Game_of_the_Amazons">Amazons</a>.
+    <br>Click <a href="https://github.com/MultiStruct/Amazons">here</a> for the referee.
+    <br>Boss made by <a href="https://www.codingame.com/profile/f76499818f5cfc3f3fa8c0eb31e13344919268">Astrobytes</a>.<br>
+</div>
+<div id="statement_back" class="statement_back" style="display:none"></div>
+  <div class="statement-body">
+  <!-- RULES -->
+    <div class="statement-section statement-rules">
+      <h1>
+          <span class="icon icon-rules">&nbsp;</span>
+          <span>Rules</span>
+      </h1>
+      <div class="statement-rules-content">
+          2 games will be played, first player will start with white pieces and second player with black pieces, once this game end, second player will play with white pieces and first player with black pieces.
+          <br>
+          <br>
+          <br> Game is played on a 8x8.<br>Starting position is randomized.<br>Game goes on until a player can no longer move.<br><br>
+          
+          <br>
+          <strong>Legal action: </strong><br>
+            <ul>
+              <li>The piece must move in any direction (orthogonally or diagonally) any number of squares, it may not cross or go to a square occupied by a piece OR occupied by a wall. After moving it must place a wall, the wall placement must meet the same requirements as the movement (it may place a wall in the direction the piece moved from) .</li>
+          </ul>
+          <br>
+
+          <strong>Resolution of a turn: </strong>
+          <ul>
+            <li>A bot must output the coordinates of the pieces he wants to move, to where and where he wants to place the wall (e.g. d8d1d7).</li>
+          </ul>
+          <br>
+          <strong>Output</strong><br>
+          <ul>
+              <li>If the coordinates are outside of the board, the game will end and the other player will win.</li>
+              <li>If the coordinates are inside but the square at those coordinates already is occupied or the path to that square crosses any wall or piece, the game will end and the other player will win.</li>
+          </ul>
+    </div>
+  </div>
+
+  <!-- EXPERT RULES -->
+  <div class="statement-section statement-expertrules">
+    <h1>
+      <span class="icon icon-expertrules">&nbsp;</span>
+      <span>Expert Rules</span>
+    </h1>
+    <div class="statement-expert-rules-content">
+      Draws are impossible.
+    </div>
+  </div>
+  
+  <!-- Victory conditions -->
+  <div class="statement-victory-conditions">
+      <div class="icon victory"></div>
+      <div class="blk">
+          <div class="title">Victory Conditions</div>
+          <div class="text">
+              <ul style="padding-bottom: 0;">
+                  <li>Be the last player to move.</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <!-- Lose conditions -->
+  <div class="statement-lose-conditions">
+      <div class="icon lose"></div>
+      <div class="blk">
+          <div class="title">Loss Conditions</div>
+          <div class="text">
+              <ul style="padding-bottom: 0;">
+                  <li>Have no legal moves.</li>
+                  <li>You do not respond in time or output an unrecognized command.</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <!-- PROTOCOL -->
+  <div class="statement-section statement-protocol">
+      <h1>
+      <span class="icon icon-protocol">&nbsp;</span>
+      <span>Game Input</span>
+  </h1>
+
+    <!-- Protocol block -->
+    <div class="blk">
+    <div class="title">Initial input</div>
+    <div class="text">
+        <span class="statement-lineno">First line</span>: <var>boardSize</var>: the number of rows and columns on the board.
+    </div>
+
+      <div class="title">Input for one game turn</div>
+      <div class="text">
+        <span class="statement-lineno">Next <var>color</var></span>: the color of your pieces ("w": white, "b":black).
+        <br>
+        <span class="statement-lineno">Next <var>boardSize</var> <var>lines</var></span>: a string of characters representing one horizontal row of the grid, bottom to top. ('.': empty, 'w': white, 'b': black, "-": wall).
+        <br>
+        <span class="statement-lineno">Next <var>lastAction</var></span>: the last action made by the opponent ("null" if it's the first turn).
+        <br>
+         <span class="statement-lineno">Next <var>actionsCount</var></span>: the number of legal actions for this turn.
+        <br>
+    </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Output</div>
+      <div class="text">
+         <span class="statement-lineno">A single line</span> containing the coordinates where you want to move from, to and where you want to place the wall. e.g. "d8d1d7".<br>
+        You can also print messages by doing the following. e.g. "d8d1d7 msg message".
+        <br>
+      </div>
+    </div>
+
+    <!-- Protocol block -->
+    <div class="blk">
+      <div class="title">Constraints</div>
+        Response time first turn is ≤
+        <const>1000</const> ms.
+        <br>Response time per turn is ≤
+        <const>100</const> ms.
+      </div>
+  </div>
+</div>
